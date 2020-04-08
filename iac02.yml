@@ -25,11 +25,6 @@ Resources:
       VpcId:
         Fn::ImportValue:
           !Sub "${EnvironmentName}-VPCID"
-      SecurityGroupIngress:
-      - IpProtocol: tcp
-        FromPort: 22
-        ToPort: 22
-        CidrIp: 67.175.198.88/32
       SecurityGroupEgress:
       - IpProtocol: tcp
         FromPort: 0
@@ -119,9 +114,8 @@ Resources:
           apt-get install apache2 -y
           systemctl start apache2.service
           cd /var/www/html
-          echo “ It works! Udagram, Udacity ” > index.html
+          echo ' It works! Udagram, Udacity ' > index.html
       ImageId: ami-005bdb005fb00e791
-      KeyName: kp001
       IamInstanceProfile: !Ref ProfileAdmin
       SecurityGroups:
       - Ref: WebServerSecGroup
